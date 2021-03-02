@@ -1,0 +1,24 @@
+{
+  "name": "game-hub",
+  "version": "1.0.0",
+  "description": "game center with user auth and basic games",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexykio/game-hub.git"
+  },
+  "keywords": [
+    "game",
+    "tictactoe",
+    "connectfour"
+  ],
+  "author": "Lexy Kramer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lexykio/game-hub/issues"
+  },
+  "homepage": "https://github.com/lexykio/game-hub#readme"
+}
