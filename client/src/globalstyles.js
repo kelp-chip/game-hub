@@ -31,6 +31,14 @@ const GlobalStyle = createGlobalStyle`
   input[type=radio] {
     margin: 0px 15px;
   }
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: gray;
+  }
 `;
 
 export default GlobalStyle;
