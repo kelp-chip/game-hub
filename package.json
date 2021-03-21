@@ -4,21 +4,34 @@
   "description": "game center with user auth and basic games",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack -w",
+    "start": "nodemon server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lexykio/game-hub.git"
   },
-  "keywords": [
-    "game",
-    "tictactoe",
-    "connectfour"
-  ],
+  "keywords": [],
   "author": "Lexy Kramer",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lexykio/game-hub/issues"
   },
-  "homepage": "https://github.com/lexykio/game-hub#readme"
+  "homepage": "https://github.com/lexykio/game-hub#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
 }
