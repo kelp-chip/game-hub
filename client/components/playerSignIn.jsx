@@ -14,7 +14,7 @@ class PlayerSignIn extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.redirect();
+    this.props.redirect(event, 'GameIndex');
   }
 
   render() {
@@ -25,11 +25,13 @@ class PlayerSignIn extends Component {
         <form onSubmit={()=> this.props.redirect(event, "GameIndex")}>
           <input name="player1" type="text" placeholder="Player 1" value={this.props.player1} onChange={this.props.handleChange}/>
           <input name="player2" type="text" placeholder="Player 2" value={this.props.player2} onChange={this.props.handleChange}/>
-          <Warning>{!this.props.warning ||"* names cannot be left blank"}</Warning>
-          <div>
-            <input type="radio" value="Classic" name="mode" /> Classic
-            <input type="radio" value="Animal Party" name="mode" /> Animal Party
-          </div>
+          <Warning>{!this.props.warning || this.props.warning}</Warning>
+          {/* <div> */}
+          <fieldset onChange={() => this.props.handleCheckChange(event)}>
+            <input type="radio" value="Classic" name="mode" defaultChecked/> Classic
+            <input type="radio" value="Animal Party" name="mode"/> Animal Party
+          </fieldset>
+          {/* </div> */}
 
           <input type="submit"/>
         </form>

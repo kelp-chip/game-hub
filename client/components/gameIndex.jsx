@@ -18,11 +18,11 @@ const Game = styled.div`
   cursor: pointer;
 `
 
-function GameIndex() {
+function GameIndex({ redirect }) {
     return (
         <Container>
-            <Game>Tic Tac Toe</Game>
-            <Game>Connect Four</Game>
+            {/* <Game>Tic Tac Toe</Game> */}
+            <Game onClick={() => redirect(event, 'ConnectFour')}>Connect Four</Game>
         </Container>
     )
 }

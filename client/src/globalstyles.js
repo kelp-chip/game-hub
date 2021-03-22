@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -39,6 +44,48 @@ const GlobalStyle = createGlobalStyle`
   a:hover {
     color: gray;
   }
+
+
+  .row {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-template-rows: auto auto auto auto auto auto auto;
+  /* background-color: aliceblue; */
+  width: max-content;
+}
+.square {
+  width: 90px;
+  height: 90px;
+  border: black solid 2px;
+  cursor: pointer;
+}
+
+#perimeter {
+  border: black solid 2px;
+  width: 634px;
+}
+
+.piece {
+  background-color: red;
+}
+
+.overlay {
+  z-index: 10;
+  width: 634px;
+  height: 540px;
+  background-color: rgba(53, 160, 253, 0.2);
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  padding: 10px;
+  padding-bottom: 15px;
+  box-sizing: content-box;
+  border-radius: 15px;
+}
+
+fieldset {
+  border:none;
+}
 `;
 
 export default GlobalStyle;

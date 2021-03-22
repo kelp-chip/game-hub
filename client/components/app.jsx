@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import GlobalStyle from '../src/globalstyles.js';
 import PlayerSignIn from './playerSignIn.jsx';
 import GameIndex from './gameIndex.jsx';
+import ConnectFour from './games/connectFour/ConnectFour.jsx';
 
 const Header = styled.div`
   padding: 10px 30px;
@@ -44,12 +45,14 @@ class App extends Component {
     this.state = {
       player1: '',
       player2: '',
+      mode: 'Classic',
       currentPage: 'PlayerSignIn',
       warning: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.handleCheckChange = this.handleCheckChange.bind(this);
   }
 
   handleChange(event) {
@@ -58,18 +61,30 @@ class App extends Component {
     });
   }
 
+  handleCheckChange(event) {
+    this.setState({
+      mode: event.target.value,
+    });
+  }
+
   redirect(event, page) {
     event.preventDefault()
     if(this.state.player1==='' || this.state.player2==='') {
       this.setState({
-        warning: true
+        warning: '* names cannot be left blank'
       });
-    } else {
+    }else {
       this.setState({
         currentPage: page,
         warning: false
       });
     }
+
+    // else if (this.state.mode===''){
+    //   //   this.setState({
+    //   //     warning: 'please choose mode'
+    //   //   });
+    //   // } 
     
   }
 
@@ -79,11 +94,14 @@ class App extends Component {
       'PlayerSignIn' : <PlayerSignIn 
       player1={this.state.player1} 
       player2={this.state.player2}
+      mode={this.state.mode}
       redirect={this.redirect}
       handleChange={this.handleChange}
+      handleCheckChange={this.handleCheckChange}
       warning={this.state.warning}
       />,
-      'GameIndex' : <GameIndex/>
+      'GameIndex' : <GameIndex redirect={this.redirect}/>,
+      'ConnectFour': <ConnectFour/>
     }
 
     let currentPage = pageMap[this.state.currentPage]
