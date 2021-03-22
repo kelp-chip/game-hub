@@ -2,16 +2,15 @@ import React from 'react';
 
 function Row({ rowNum, dropPiece }) {
 
-
   return (
     <div className="row">
-      <div className="square" data-space={String(rowNum) + 0} onClick={dropPiece}></div>
-      <div className="square" data-space={String(rowNum) + 1} onClick={dropPiece}></div>
-      <div className="square" data-space={String(rowNum) + 2} onClick={dropPiece}></div>
-      <div className="square" data-space={String(rowNum) + 3} onClick={dropPiece}></div>
-      <div className="square" data-space={String(rowNum) + 4} onClick={dropPiece}></div>
-      <div className="square" data-space={String(rowNum) + 5} onClick={dropPiece}></div>
-      <div className="square" data-space={String(rowNum) + 6} onClick={dropPiece}></div>
+      <div className="square" data-space={0 + String(rowNum)} onClick={dropPiece}></div>
+      <div className="square" data-space={1 + String(rowNum)} onClick={dropPiece}></div>
+      <div className="square" data-space={2 + String(rowNum)} onClick={dropPiece}></div>
+      <div className="square" data-space={3 + String(rowNum)} onClick={dropPiece}></div>
+      <div className="square" data-space={4 + String(rowNum)} onClick={dropPiece}></div>
+      <div className="square" data-space={5 + String(rowNum)} onClick={dropPiece}></div>
+      <div className="square" data-space={6 + String(rowNum)} onClick={dropPiece}></div>
     </div>
   )
 

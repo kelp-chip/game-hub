@@ -46,7 +46,7 @@ class App extends Component {
       player1: '',
       player2: '',
       mode: 'Classic',
-      currentPage: 'PlayerSignIn',
+      currentPage: 'ConnectFour',
       warning: false
     };
 

@@ -3,7 +3,7 @@ import Row from './Row.jsx';
 
 function Board({dropPiece}) {
   var rows = [];
-  for(var i = 0; i < 6; i++) {
+  for(var i = 5; i >= 0; i--) {
     rows.push(<Row key={i} rowNum={i} dropPiece={dropPiece}/>);
   }
   return rows;

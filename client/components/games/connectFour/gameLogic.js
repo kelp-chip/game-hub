@@ -1,5 +1,4 @@
 const checkHorizontals = (board, play) => {
-    // console.log(board[play[0]])
     let streak = 0;
     for (column of board) {
         if(column[play[0]]) {
@@ -29,20 +28,67 @@ const checkVerticals = (board, play) => {
     return false;
 }
 
-const checkDiagonal = (board, play) => {
+const checkMinorDiagonal = (board, play) => {
+  let row = 5 - play[1];
+  let column = play[0];
+  let smaller = row < column? row: column;
+  if(smaller !== 0) {
+    row = row - smaller;
+    column = column - smaller;
+  }
 
+  let streak = 0;
+  if(column === 0) {
+    while(row < 6) {
+      let inverseRow = Math.abs(row - 5);
+      if(board[column][inverseRow]) {
+        streak++
+        if(streak === 4) return true;
+      } else {
+        streak = 0;
+      }
+      column++;
+      row++;
+    }
+  } else if(column >= 1 && column < 4) {
+    while(column < 7) {
+      let inverseRow = Math.abs(row - 5);
+      if(board[inverseRow][column]) {
+        streak++
+        if(streak === 4) return true;
+      } else {
+        streak = 0;
+      }
+      column++;
+      row++;
+    }
+  }
+  return false;
 }
 
-//0 - row
-//1 - column
+const checkMajorDiagonal = (board, play) => {
+  // let row = 5 - play[1];
+  // let column = play[0];
+  // let smaller = row < column? row: column;
+  // if(smaller !== 0) {
+  //   row = row - smaller;
+  //   column = column - smaller;
+  // }
+  return false
+}
+
+const checkDiagonals = (board, play) => {
+  if(checkMinorDiagonal(board, play) || checkMajorDiagonal(board, play)) return true;
+  return false;
+}
 
 
 module.exports = {
     checkBoard: (board, play)=>{
-    if(checkHorizontals(board, play) || checkVerticals(board, play)) {
-        return true;
-    }
-    return false;
-    
+    // if(checkHorizontals(board, play) || checkVerticals(board, play)) {
+    //     return true;
+    // }
+    // return false; 
+    return checkDiagonals(board, play)
   }
 }

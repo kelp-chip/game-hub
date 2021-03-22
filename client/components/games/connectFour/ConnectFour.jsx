@@ -20,40 +20,41 @@ class ConnectFour extends React.Component {
     }
   }
 
-  newBoard() {
+    newBoard() {
     return [
-      [false, false, false, false, false, false], //column
-      [false, false, false, false, false, false], //column
-      [false, false, false, false, false, false], //column
-      [false, false, false, false, false, false], //column
-      [false, false, false, false, false, false], //column
-      [false, false, false, false, false, false], //column
-      [false, false, false, false, false, false]  //column
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false]
     ]
   }
 
   dropPiece(event) {
-    var space = event.target.getAttribute('data-space')
-    var col = space[1];
-    // console.log(`${this.state.currentPlayer}Board`)
-    var column = this.board[col]
-    var playerColumn = this[`${this.state.currentPlayer}Board`][col]
-    for (var i = column.length - 1; i >= 0; i--) {
-      if (!column[i]) {
-        column[i] = true;
-        playerColumn[i] = true;
-        var spot = String(i) + String(col);
-        var color = this.state.currentPlayer === 'p1' ? 'red' : 'blue';
-        document.querySelector(`[data-space="${spot}"]`).style.backgroundColor = color;
+    let space = event.target.getAttribute('data-space');
+    let column = space[0];
+    for(let i = 5; i >= 0; i--) {
+      if(!this.board[i][column]) {
+        //Update board data
+        this[`${this.state.currentPlayer}Board`][i][column] = true;
+        this.board[i][column] = true;
 
-        this.isItOver(this[`${this.state.currentPlayer}Board`], spot)
+        //Update board appearance
+        let color = this.state.currentPlayer === 'p1' ? 'red' : 'blue';
+        let row = Math.abs(i-5)
+        document.querySelector(`[data-space="${column}${row}"]`).style.backgroundColor = color;
+        let play = `${column}${i}`;
 
-        // console.log('GAME: ', over)
-        break
+        //Check if current player has won
+        this.isItOver(this[`${this.state.currentPlayer}Board`], play)
+        break;
       }
     }
 
-    var player = this.state.currentPlayer === 'p1' ? 'p2' : 'p1';
+    // console.log(this[`${this.state.currentPlayer}Board`])
+
+    let player = this.state.currentPlayer === 'p1' ? 'p2' : 'p1';
     this.setState({
       currentPlayer: player
     })
@@ -62,7 +63,9 @@ class ConnectFour extends React.Component {
 
   isItOver(board, play) {
 
-    gameLogic.checkBoard(board, play);
+    if(gameLogic.checkBoard(board, play)){
+      alert(`${this.state.currentPlayer} wins!`)
+    }
     // console.log(board)
     // console.log(play)
 
