@@ -67,13 +67,40 @@ const checkMinorDiagonal = (board, play) => {
 }
 
 const checkMajorDiagonal = (board, play) => {
-  // let row = 5 - play[1];
-  // let column = play[0];
-  // let smaller = row < column? row: column;
-  // if(smaller !== 0) {
-  //   row = row - smaller;
-  //   column = column - smaller;
-  // }
+  let row = 5 - play[1];
+  let column = 6 - play[0];
+  let smaller = row < column? row: column;
+  if(smaller !== 0) {
+    row = row - smaller;
+    column = column - smaller;
+  }
+  column = Math.abs(column - 6)
+  row = Math.abs(row - 5)
+  let streak = 0;
+  if(column > 4) {
+    while(row >= 0) {
+      if(board[row][column]) {
+        streak++
+        if(streak === 4) return true;
+      } else {
+        streak = 0;
+      }
+      row--
+      column--
+    }
+
+  } else if(column >= 3) {
+    while(column >= 0) {
+      if(board[row][column]) {
+        streak++
+        if(streak === 4) return true;
+      } else {
+        streak = 0;
+      }
+      row--
+      column--
+    }
+  }
   return false
 }
 
@@ -85,10 +112,9 @@ const checkDiagonals = (board, play) => {
 
 module.exports = {
     checkBoard: (board, play)=>{
-    // if(checkHorizontals(board, play) || checkVerticals(board, play)) {
-    //     return true;
-    // }
-    // return false; 
-    return checkDiagonals(board, play)
+    if(checkDiagonals(board, play) || checkHorizontals(board, play) || checkVerticals(board, play)) {
+      return true;
+    }
+    return false;
   }
 }
