@@ -1,2 +1,2 @@
 ## Two Chairs game-hub
-A simple site to play basic pull up a second chair style games with a friend.
+A site for playing basic pull up a second chair style games with a friend.
