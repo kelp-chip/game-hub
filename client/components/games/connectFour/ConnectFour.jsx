@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './Board.jsx';
-import gameLogic from './gameLogic.js';
+import gameLogic from '../../../connectFourLogic.js';
 import styled from 'styled-components';
 
 const GameContainer = styled.div`
@@ -16,7 +16,8 @@ class ConnectFour extends React.Component {
     this.p2Board = this.newBoard();
 
     this.state = {
-      currentPlayer: 'p1'
+      currentPlayer: 'p1',
+      freezeBoard: false
     }
   }
 
@@ -64,7 +65,9 @@ class ConnectFour extends React.Component {
   isItOver(board, play) {
 
     if(gameLogic.checkBoard(board, play)){
-      alert(`${this.state.currentPlayer} wins!`)
+      this.setState({
+        freezeBoard: true
+      })
     }
     // console.log(board)
     // console.log(play)
@@ -81,7 +84,7 @@ class ConnectFour extends React.Component {
     return (
       <GameContainer>
         <div id="perimeter"><Board dropPiece={this.dropPiece}/></div>
-        {/* <div className="overlay"></div> */}
+        {this.state.freezeBoard && <div className="overlay"></div>}
       </GameContainer>
     )
   }

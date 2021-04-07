@@ -6,6 +6,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  main {
+    /* background-color: red; */
+    z-index: 10;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -73,7 +81,7 @@ const GlobalStyle = createGlobalStyle`
   z-index: 10;
   width: 634px;
   height: 540px;
-  background-color: rgba(53, 160, 253, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   position: absolute;
   left: -10px;
   top: -10px;

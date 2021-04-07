@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import GlobalStyle from '../src/globalstyles.js';
-import PlayerSignIn from './playerSignIn.jsx';
-import GameIndex from './gameIndex.jsx';
+import PlayerSignIn from './PlayerSignIn.jsx';
+import GameIndex from './GameIndex.jsx';
 import ConnectFour from './games/connectFour/ConnectFour.jsx';
 
 const Header = styled.div`
@@ -15,6 +15,7 @@ const Header = styled.div`
 const Logo = styled.div`
   font-size: 28px;
   display: flex;
+  cursor: pointer;
   img {
     margin: 0 20px;
   }
@@ -30,8 +31,9 @@ const LargeText = styled.span`
 
 const Modal = styled.div`
   background-color: white;
-  margin: 5% auto;
+  margin-top: 3%;
   width: max-content;
+  height: max-content;
   border-radius: 20px;
   padding: 1em;
   box-sizing: border-box;
@@ -46,7 +48,7 @@ class App extends Component {
       player1: '',
       player2: '',
       mode: 'Classic',
-      currentPage: 'ConnectFour',
+      currentPage: 'PlayerSignIn',
       warning: false
     };
 
@@ -110,7 +112,7 @@ class App extends Component {
       <>
         <GlobalStyle/>
         <Header>
-        <Logo>
+        <Logo onClick={() => this.redirect(event, 'GameIndex')}>
           <div><LargeText>Two Chairs</LargeText><br/>game-hub</div>
           <img src="./src/chairs.svg" width="100px"/>
         </Logo>
@@ -124,9 +126,11 @@ class App extends Component {
         </a>
         
         </Header>
+        <main>
         <Modal>
         {currentPage}
         </Modal>
+        </main>
       </>
     )
   }
